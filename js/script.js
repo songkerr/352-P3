@@ -8,3 +8,19 @@ var config = {
     messagingSenderId: "806105097238"
 };
 firebase.initializeApp(config);
+
+// Get Elements
+const emailText = document.getElementById('emailText');
+const passwordText = document.getElementById('passwordText');
+const signinBtn = document.getElementById('signinBtn');
+
+// Add login event
+signinBtn.addEventListener('click', e => {
+    // Get email and pass
+    const email = emailText.value;
+    const pass = passwordText.value;
+    const auth = firebase.auth();
+    // Signin
+    const promise = auth.signInWithEmailAndPassword(email, pass);
+    promise.catch(e => console.log(e.message));
+})
