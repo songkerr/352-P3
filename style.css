@@ -4,11 +4,15 @@ html {
     font-size: 14px;
     overflow-x: hidden;
     height: 100%;
-    background: linear-gradient(30deg, #32D2B9 , #93E44C);
 }
 
 body {
 
+}
+
+/* ================ index ================ */
+#index {
+    background: linear-gradient(30deg, #32D2B9 , #93E44C);
 }
 
 #whiteicon {
@@ -37,7 +41,7 @@ body {
 
 #mainregister > button {
     color: white;
-    font-family: 'Josefin Sans';
+    font-family: 'Josefin Sans', sans-serif;
     font-weight: 300;
     font-size: 1.1rem;
     margin: 0 auto;
@@ -64,12 +68,44 @@ body {
     text-align: center;
 }
 
-#existingsignin > button {
+#existingsignin > a {
+    text-decoration: none;
     color: white;
-    font-family: 'Josefin Sans';
+    font-family: 'Josefin Sans', sans-serif;
     font-weight: 100;
     border: 1px solid white;
     border-radius: 50px;
     background: none;
     padding: 3.2px 12px;
+}
+
+/* ================ sign in ================ */
+
+#signinlogo {
+    display: block;
+    margin: auto;
+    height: 9vh;
+    margin-top: 9vh;
+}
+
+#signinform {
+    display: flex;
+    flex-direction: column;
+    width: 64%;
+    margin: auto;
+    text-align: center;
+    margin-top: 40%;
+}
+
+#signinform > input[type="text"] {
+    font-weight: 300;
+    font-family: 'Josefin Sans', sans-serif;
+    border: 0;
+    border-bottom: 1px solid #353535;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+input:focus{
+    outline: none;
 }
