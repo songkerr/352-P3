@@ -13,6 +13,7 @@ firebase.initializeApp(config);
 const emailText = document.getElementById('emailText');
 const passwordText = document.getElementById('passwordText');
 const signinBtn = document.getElementById('signinBtn');
+const signupBtn = document.getElementById('signupBtn');
 
 // Add login event
 signinBtn.addEventListener('click', e => {
@@ -23,4 +24,24 @@ signinBtn.addEventListener('click', e => {
     // Signin
     const promise = auth.signInWithEmailAndPassword(email, pass);
     promise.catch(e => console.log(e.message));
-})
+});
+
+// Add signup event
+signupBtn.addEventListener('click', e => {
+    // Get email and pass
+    const email = emailText.value;
+    const pass = passwordText.value;
+    const auth = firebase.auth();
+    // Signin
+    const promise = auth.createUserWithEmailAndPassword(email, pass);
+    promise.catch(e => console.log(e.message));
+});
+
+// Add a realtime listener
+firbase.auth().onAuthStateChanged(firebaseUser => {
+    if(firebaseUser) {
+        console.log(firebaseUser);
+    } else {
+        console.log('not logged in');
+    }
+});

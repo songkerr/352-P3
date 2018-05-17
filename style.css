@@ -38,7 +38,7 @@ body {
     margin-top: -2vh;
 }
 
-#mainregister > a {
+#mainregister > button {
     text-align: center;
     text-decoration: none;
     color: white;
@@ -56,7 +56,7 @@ body {
     margin-top: 18vh;
 }
 
-#mainregister > a > img {
+#mainregister > button > img {
     height: 10px;
     padding-left: 8px;
     padding-bottom: 1px;
@@ -68,6 +68,10 @@ body {
     margin-top: 22vh;
     color: white;
     text-align: center;
+}
+
+button:focus{
+    outline: none;
 }
 
 #existingsignin > a {
