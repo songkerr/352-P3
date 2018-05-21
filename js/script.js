@@ -1,13 +1,16 @@
 // Initialize Firebase
-var config = {
+  var config = {
     apiKey: "AIzaSyAMGxj5EH5ybAkSkFL7DaTKi84CgZChG18",
     authDomain: "p3-7860d.firebaseapp.com",
     databaseURL: "https://p3-7860d.firebaseio.com",
     projectId: "p3-7860d",
-    storageBucket: "",
+    storageBucket: "p3-7860d.appspot.com",
     messagingSenderId: "806105097238"
-};
-firebase.initializeApp(config);
+  };
+  firebase.initializeApp(config);
+
+const firebaseDatabase = firebase.database();
+const firebaseAuth = firebase.auth();
 
 // Get Elements
 const emailText = document.getElementById('emailText');
@@ -23,7 +26,9 @@ signinBtn.addEventListener('click', e => {
     const auth = firebase.auth();
     // Signin
     const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message));
+    promise.catch(e => console.log(e.message))
+    .then(function(user) {
+    });
 });
 
 // Add signup event
@@ -38,7 +43,7 @@ signupBtn.addEventListener('click', e => {
 });
 
 // Add a realtime listener
-firbase.auth().onAuthStateChanged(firebaseUser => {
+firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         console.log(firebaseUser);
     } else {
