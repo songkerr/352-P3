@@ -9,6 +9,35 @@
   };
   firebase.initializeApp(config);
 
+// ================ database ================ //
+
+var rootRef = firebase.database().ref();
+var tracksRef = rootRef.child('Tracks');
+
+tracksRef.orderByChild("Size").equalTo("large").on("child_added", function (snapshot) {
+    var newTrack = snapshot.val();
+    $("#lrgResults").append("<div>" + newTrack.Track + "<br><br> Distance: " + newTrack.Distance + "<br> Time: Approximately " + newTrack.Time + "<br> Suitable for " + newTrack.Size + " dogs of " + newTrack.Fitness + " fitness </div>");
+});
+
+tracksRef.orderByChild("Size").equalTo("medium").on("child_added", function (snapshot) {
+    var newTrack = snapshot.val();
+    
+    $("#medResults").append("<div>" + newTrack.Track + "<br><br> Distance: " + newTrack.Distance + "<br> Time: Approximately " + newTrack.Time + "<br> Suitable for " + newTrack.Size + " dogs of " + newTrack.Fitness + " fitness </div>");
+});
+
+tracksRef.orderByChild("Size").equalTo("small").on("child_added", function (snapshot) {
+    var newTrack = snapshot.val();
+    $("#smlResults").append("<div>" + newTrack.Track + "<br><br> Distance: " + newTrack.Distance + "<br> Time: Approximately " + newTrack.Time + "<br> Suitable for " + newTrack.Size + " dogs of " + newTrack.Fitness + " fitness </div>");
+});
+
+function showPage() {
+    var sel = document.getElementById('dogsize');
+    var option = sel.options[sel.selectedIndex].value;
+    window.location.replace(option + ".html");
+}
+
+// ================ user signup/in ================ //
+
 const firebaseDatabase = firebase.database();
 const firebaseAuth = firebase.auth();
 
