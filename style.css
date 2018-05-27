@@ -267,7 +267,6 @@ a: visited {
 .description {
     width: 65%;
     margin: auto;
-    margin-top: 2vh;
     color: #353535;
     text-align: left;
     font-weight: 300;
@@ -278,4 +277,42 @@ a: visited {
     width: 65%;
     margin: auto;
     padding: 4vh 0px 1.4vh;
+}
+
+#trackrouteTitle {
+    width: 65%;
+    margin: auto;
+    margin-top: 1vh;
+    text-align: right;
+}
+
+#trackrouteLink {
+    text-decoration: none;
+    color: #63D691;
+}
+
+footer {
+    display: flex;
+    background: #fff;
+    height: 20vh;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
+    background-attachment: scroll;
+}
+
+/* ================ nav bar ================ */
+
+footer > div {
+    margin: auto;
+}
+
+footer > div > img {
+    margin: 0;
+    height: 4.5vh;
+}
+
+#paws {
+    height: 5.5vh;
 }
