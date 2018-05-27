@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	   <link rel="stylesheet" type="text/css" href="index.css">
+	   <script src="trackdirection.js"></script>
+	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>PawPrints</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" href="../img/favicon.png" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css" />
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400" rel="stylesheet">
+
+	   <script>
+		   $(document).ready(function(){
+		   	 $(".redtrack").click(function(){
+		   		$("#myDIV").slideToggle("slow");
+			});
+		 });
+	   </script>
+	   <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+      
+   </head>
+   
+   <body>   
+
+  	<div id="map" style="position:relative; overflow:hidden;"></div>  
+
+				<div id="myDIV">
+				  <div class="flex-container">
+					  <div class="warningdiv">
+                        <h2 id="TemperatureOutput"></h2>
+					  </div>
+				    <div class="one">
+						<h1>Wilton BushWalk</h1>
+						<h3>Hawkins Hill, Wellington, New Zealand</h3>
+						<p>From Sinclair Head the track gets increasingly rough and ill-defined. By the time you're a couple of kilometres from Karori Rock, the track has degenerated into a (large) pebble rumble with sections of unridable deep, soft sand. At low tide it might be possible to ride on the compacted wet sand along the water line, but don't count on it. Most likely there will be a bit of walking involved.<br>
+                        About 1.7km from Sinclair Head there is a track diverging up the cliff face. This initially goes to a memorial overlooking Cook Strait and then heads inland to Long Gully.</p>
+					</div>
+		
+				    <div class="two">
+						<h2 class="trackLength">6.71 km</h2>
+						<h2 class="trackGrade">Intermediate</h2>
+						<h2 class="trackType">Bike + Foot</h2>
+						<h2 class="trackType">Single</h2>				
+					</div>
+			
+				    <div class="three">
+						<h3>Getting there</h3>
+						<p>Continue around the coastline from the end of Pariwhero at Sinclair Head.</p>
+						<h3>Other notes</h3>
+						<p>Watch out for the 4x4 drivers. They don't like stopping on the soft parts of the track, in case their vehicles get stuck. Consequently most of them will charge on through and expect everyone else to get out of the way.</p>	
+					</div>	
+                </div>
+            </div>
+
+	    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAurrAyKu3_UAVWVrGRLAGgGVFTsLZHILI&libraries=visualization&callback=initMap">
+	    </script>
+				
+	</body>
+</html>
+	    
+		
