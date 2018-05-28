@@ -12,10 +12,11 @@
         
         <img id="signinlogo" src="img/favicon.png">
         <form id="signinform">
-            <input id="emailText" type="text"  placeholder="EMAIL">
-            <input id="passwordText" type="password" placeholder="PASSWORD">
-            <button id="signinBtn" type="submit">SIGN IN</button>
+            <input id="emailText" type="text"  placeholder="EMAIL"/>
+            <input id="passwordText" type="password" placeholder="PASSWORD"/>
+            <button id="signinBtn" onclick="signin()">SIGN IN</button>
             <button style="display: none;" id="signupBtn">CONTINUE</button>
+            <button style="display: none;" id="logoutBtn">LOGOUT</button>
         </form>
         
         <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
