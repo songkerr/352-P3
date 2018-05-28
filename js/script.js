@@ -26,46 +26,61 @@ function showPage() {
     window.location.replace(option + ".html");
 }
 
+// ================ dog list ================ //
+
+// var dogsRef = rootRef.child('Dogs');
+var query = firebase.database().ref("Dogs");
+query.once("value")
+    .then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            var key = childSnapshot.key;
+            var childData = childSnapshot.val();
+            console.log(childData.Breed);
+            $("#breedsList").append("<option value='" + childData.Breed + "'</option>" )
+        });
+
+    });
+
 // ================ user signup/in ================ //
 
-const firebaseDatabase = firebase.database();
-const firebaseAuth = firebase.auth();
+// const firebaseDatabase = firebase.database();
+// const firebaseAuth = firebase.auth();
 
-// Get Elements
-const emailText = document.getElementById('emailText');
-const passwordText = document.getElementById('passwordText');
-const signinBtn = document.getElementById('signinBtn');
-const signupBtn = document.getElementById('signupBtn');
+// // Get Elements
+// const emailText = document.getElementById('emailText');
+// const passwordText = document.getElementById('passwordText');
+// const signinBtn = document.getElementById('signinBtn');
+// const signupBtn = document.getElementById('signupBtn');
 
-// Add login event
-signinBtn.addEventListener('click', e => {
-    // Get email and pass
-    const email = emailText.value;
-    const pass = passwordText.value;
-    const auth = firebase.auth();
-    // Signin
-    const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message))
-    .then(function(user) {
-    });
-});
+// // Add login event
+// signinBtn.addEventListener('click', e => {
+//     // Get email and pass
+//     const email = emailText.value;
+//     const pass = passwordText.value;
+//     const auth = firebase.auth();
+//     // Signin
+//     const promise = auth.signInWithEmailAndPassword(email, pass);
+//     promise.catch(e => console.log(e.message))
+//     .then(function(user) {
+//     });
+// });
 
-// Add signup event
-signupBtn.addEventListener('click', e => {
-    // Get email and pass
-    const email = emailText.value;
-    const pass = passwordText.value;
-    const auth = firebase.auth();
-    // Signin
-    const promise = auth.createUserWithEmailAndPassword(email, pass);
-    promise.catch(e => console.log(e.message));
-});
+// // Add signup event
+// signupBtn.addEventListener('click', e => {
+//     // Get email and pass
+//     const email = emailText.value;
+//     const pass = passwordText.value;
+//     const auth = firebase.auth();
+//     // Signin
+//     const promise = auth.createUserWithEmailAndPassword(email, pass);
+//     promise.catch(e => console.log(e.message));
+// });
 
-// Add a realtime listener
-firebase.auth().onAuthStateChanged(firebaseUser => {
-    if(firebaseUser) {
-        console.log(firebaseUser);
-    } else {
-        console.log('not logged in');
-    }
-});
+// // Add a realtime listener
+// firebase.auth().onAuthStateChanged(firebaseUser => {
+//     if(firebaseUser) {
+//         console.log(firebaseUser);
+//     } else {
+//         console.log('not logged in');
+//     }
+// });

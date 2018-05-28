@@ -134,7 +134,14 @@ input:focus{
     display: block;
     margin: auto;
     height: 9vh;
-    margin-top: 22vh;
+    margin-top: 18vh;
+}
+
+.registerText {
+    text-align: center;
+    color: #63D691;
+    margin-top: 3vh;
+    font-weight: 400;
 }
 
 #signupform {
@@ -158,6 +165,7 @@ input:focus{
 #signupBtn {
     font-family: 'Josefin Sans', sans-serif;
     text-decoration: none;
+    font-weight: 400;
     color: white;
     border: none;
     border-radius: 50px;
@@ -176,6 +184,25 @@ input:focus{
     margin: auto;
     text-align: center;
     margin-top: 10vh;
+}
+
+input[list] {
+    width: 100%;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    color: #353535;
+    border: 0;
+    border-bottom: 1px solid #4F4F4F;
+    margin-top: 12%;
+    background-image: url("img/search.png");
+    background-size: 1.9vh;
+    background-position: 96% 50%;
+    background-repeat: no-repeat;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
 }
 
 #dogsize {
@@ -282,14 +309,15 @@ a: visited {
 #trackrouteTitle {
     width: 65%;
     margin: auto;
-    margin-top: 1vh;
-    text-align: right;
+    margin-top: 1.5vh;
 }
 
 #trackrouteLink {
     text-decoration: none;
     color: #63D691;
 }
+
+/* ================ nav bar ================ */
 
 footer {
     display: flex;
@@ -301,8 +329,6 @@ footer {
     height: 10vh;
     background-attachment: scroll;
 }
-
-/* ================ nav bar ================ */
 
 footer > div {
     margin: auto;
