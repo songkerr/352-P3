@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PawPrints</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" href="../img/favicon.png" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css" />
+        <link rel="stylesheet" href="../style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400" rel="stylesheet">
+    
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAialOco_QZ9EpqMxzYqqkkpQDza4ENv-Y&callback=initMap"></script>
+        <script type="text/javascript">
+            var map;
+            var infowindow;
+        </script>
+
+        <script>
+              // New map
+              var map = null;
+              var bounds = null;
+
+              var directionsService = null;
+              var directionsDisplay = null;
+
+              // Add Marker Function
+              function addMarker(map, props){
+                var marker = new google.maps.Marker({
+                  position:props.coords,
+                  map:map
+                  //icon:props.iconImage
+                });
+
+                // Check for customicon
+                if(props.iconImage){
+                  // Set icon image
+                  marker.setIcon(props.iconImage);
+                }
+
+                // Check content
+                if(props.content){
+                  var infoWindow = new google.maps.InfoWindow({
+                    content:props.content
+                  });
+
+                  marker.addListener('click', function(){
+                    toMarker(props);
+                  });
+                }
+              }
+
+            function toMarker(props)
+            {
+              console.log(props);
+              latLng = new google.maps.LatLng(-41.295548,174.775604);
+
+              dest = new google.maps.LatLng(props.coords.lat, props.coords.lng);
+
+              directionsService.route({
+                  origin: latLng,
+                  destination: dest,
+                  travelMode: 'DRIVING'
+                }, function(response, status) {
+                  if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+                  } else {
+                    window.alert('Directions request failed due to ' + status);
+                  }
+                });
+            }
+
+            function initMap()
+            {
+              // Map options
+              directionsService = new google.maps.DirectionsService;
+              directionsDisplay = new google.maps.DirectionsRenderer;
+              var options = {
+                zoom: 12,
+                center:{lat:-41.286460,lng:174.776236}
+              }
+
+               map = new google.maps.Map(document.getElementById('map'), options);
+              bounds = new google.maps.LatLngBounds();
+
+            directionsDisplay.setMap(map);
+
+              // Listen for click on map
+              google.maps.event.addListener(map, 'click', function(event){
+                // Add marker
+                addMarker({coords:event.latLng});
+              });
+
+              // Array of markers
+              var markers = [
+                {
+                  coords:{lat:-41.292996,lng:174.734789},
+                  content:'<h1>Salvation Bush Walk</h1>'
+                },
+              ];
+
+              // Loop through markers
+              for(var i = 0;i < markers.length;i++){
+                // Add marker
+                addMarker(map,markers[i]);
+          bounds.extend(markers[i].coords);
+
+              }
+
+              map.fitBounds(bounds);
+            }
+
+        // ================ user location ================ //
+
+        function findMyCurrentLocation() {
+          var geoService = navigator.geolocation;
+          if (geoService) {
+            geoService.getCurrentPosition(showCurrentLocation,errorHandler,{enableHighAccuracy: true});
+          } else {
+            alert("Your Browser does not support GeoLocation.");
+          }
+        }
+
+        function showCurrentLocation(position){
+          //Convert position -> Lat/Lon object
+          var latLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+
+          var usermarker = {
+            coords:latLng,
+          };
+
+          addMarker(map, usermarker);
+
+          bounds.extend(usermarker.coords);
+
+          map.fitBounds(bounds);
+        }
+
+        function errorHandler(error){
+            alert("Error while retrieving current position. Error code: " + error.code + ",Message: " + error.message);
+        }
+
+        // ================ directions ================ //
+
+        var onChangeHandler = function() {
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
+            };
+            document.getElementById('start').addEventListener('change', onChangeHandler);
+            document.getElementById('end').addEventListener('change', onChangeHandler);
+
+              function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+                directionsService.route({
+                  origin: document.getElementById('start').value,
+                  destination: document.getElementById('end').value,
+                  travelMode: 'DRIVING'
+                }, function(response, status) {
+                  if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+                  } else {
+                    window.alert('Directions request failed due to ' + status);
+                  }
+                });
+              }
+        </script>
+    </head>
+    
+    <body onload="findMyCurrentLocation()">
+        
+        <h2 class="trackTitle">Salvation Bush Walk</h2>
+        <div id="map"></div>
+        
+        <a href="../directions/test.html" id="trackrouteLink">
+            <p id="trackrouteTitle">Track Route</p>
+        </a>
+        
+        <section id="description">
+<!--
+        <p class="description">
+          The Polhill Reserve loop is a 7.3km walk, taking about 2 hours <br><br> This loop walk has a common entry and exit point and is suitable for those with average fitness.
+        </p>
+-->
+        <h5>Getting there:</h5>
+        <p class="description">
+          Catch a number 43 or number 44 bus to Clutha Avenue in Khandallah, or the Johnsonville Line train to Simla Crescent.
+        </p>
+        </section>
+        
+        <footer>
+            <div>
+                <a href="index.html">
+                    <img id="paws" src="../img/paws.png">
+                </a>
+            </div>
+            <div>
+                <img src="../img/search_g.png">
+            </div>
+            <div>
+                <img src="../img/message.png">
+            </div>
+            <div>
+                <img src="../img/user.png">
+            </div>
+        </footer>
+
+    </body>
+
+</html>
+
+
