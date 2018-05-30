@@ -320,7 +320,8 @@ a: visited {
 }
 
 #trackrouteTitle {
-    width: 65%;
+    text-align: center;
+    font-size: 12px;
     margin: auto;
     margin-top: 1.5vh;
 }
