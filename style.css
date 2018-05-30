@@ -253,7 +253,7 @@ input[type="submit"]:focus {
     margin-top: 5vh;
 }
 
-#medResults, #lrgResults {
+#medResults, #lrgResults, #smlResults {
     width: 75%;
     margin: auto;
     margin-top: 5vh;
@@ -266,12 +266,12 @@ input[type="submit"]:focus {
     color: #353535;
 }
 
-a: visited {
-    color: #353535;
-}
-
 a > p {
     font-weight: 300;
+}
+
+a: visited {
+    color: #353535;
 }
 
 .infodiv {

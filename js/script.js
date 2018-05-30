@@ -14,10 +14,16 @@
 var rootRef = firebase.database().ref();
 var tracksRef = rootRef.child('Tracks');
 
+tracksRef.orderByChild("Size").equalTo("small").on("child_added", function (snapshot) {
+    var newTrack = snapshot.val();
+    
+    $("#smlResults").append("<div class='infodiv'> <a href=" + newTrack.URL + " <p> " + newTrack.Track + "</p><p> Distance: " + newTrack.Distance + "<br> Time: Approximately " + newTrack.Time + "<br> Suitable for " + newTrack.Size + " dogs of " + newTrack.Fitness + " fitness</p></a></div>");
+});
+
 tracksRef.orderByChild("Size").equalTo("medium").on("child_added", function (snapshot) {
     var newTrack = snapshot.val();
     
-    $("#medResults").append("<div class='infodiv'> <a href=" + newTrack.URL + " <p> " + newTrack.Track + "<br><br> Distance: " + newTrack.Distance + "<br> Time: Approximately " + newTrack.Time + "<br> Suitable for " + newTrack.Size + " dogs of " + newTrack.Fitness + " fitness</p></a></div>");
+    $("#medResults").append("<div class='infodiv'> <a href=" + newTrack.URL + " <p> " + newTrack.Track + "</p><p> Distance: " + newTrack.Distance + "<br> Time: Approximately " + newTrack.Time + "<br> Suitable for " + newTrack.Size + " dogs of " + newTrack.Fitness + " fitness</p></a></div>");
 });
 
 tracksRef.orderByChild("Size").equalTo("large").on("child_added", function (snapshot) {
