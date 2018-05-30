@@ -280,6 +280,15 @@ a: visited {
 
 /* ================ individual track pages ================ */
 
+.trackTitle {
+    text-align: center;
+    color: #63D691;
+    font-weight: 400;
+    width: 75%;
+    margin: auto;
+    margin-top: 5vh; 
+}
+
 #map {
     margin: auto;
     margin-top: 5vh;
