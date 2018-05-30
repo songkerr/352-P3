@@ -43,74 +43,78 @@ query.once("value")
 
 // ================ user signup/in ================ //
 
-var provider = new firebase.auth.GoogleAuthProvider();
-
-function signin() {
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        console.log(user.displayName);
-        // ...
-    }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-        });
-}
-
-// const firebaseDatabase = firebase.database();
-// const firebaseAuth = firebase.auth();
-
-// // Get Elements
-// const emailText = document.getElementById('emailText');
-// const passwordText = document.getElementById('passwordText');
-// const signinBtn = document.getElementById('signinBtn');
-// const signupBtn = document.getElementById('signupBtn');
+//var provider = new firebase.auth.GoogleAuthProvider();
 //
-// // Add login event
-// signinBtn.addEventListener('click', e => {
-//     // Get email and pass
-//     const email = emailText.value;
-//     const pass = passwordText.value;
-//     const auth = firebase.auth();
-//     // Signin
-//     const promise = auth.signInWithEmailAndPassword(email, pass);
-//     promise.catch(e => console.log(e.message))
-//     .then(function(user) {
-//     });
-// });
-//
-// // Add signup event
-// signupBtn.addEventListener('click', e => {
-//     // Get email and pass
-//     const email = emailText.value;
-//     const pass = passwordText.value;
-//     const auth = firebase.auth();
-//     // Signin
-//     const promise = auth.createUserWithEmailAndPassword(email, pass);
-//     promise.catch(e => console.log(e.message));
-//     var errorCode = error.code;
-//     var errorMessage = error.message;
-//     window.alert("Error:" + errorMessage);
-// });
-//
-// // Add a realtime listener
-// firebase.auth().onAuthStateChanged(firebaseUser => {
-//     if(firebaseUser) {
-//         console.log(firebaseUser);
-//         logoutBtn.classList.remove('hide');
-//     } else {
-//         console.log('not logged in');
-//         logoutBtn.classList.add('hide');
-//     }
-// });
+//function signin() {
+//    firebase.auth().signInWithPopup(provider).then(function(result) {
+//        // This gives you a Google Access Token. You can use it to access the Google API.
+//        var token = result.credential.accessToken;
+//        // The signed-in user info.
+//        var user = result.user;
+//        console.log(user.displayName);
+//        // ...
+//    }).catch(function(error) {
+//        // Handle Errors here.
+//        var errorCode = error.code;
+//        var errorMessage = error.message;
+//        // The email of the user's account used.
+//        var email = error.email;
+//        // The firebase.auth.AuthCredential type that was used.
+//        var credential = error.credential;
+//        // ...
+//        });
+//}
+
+//-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-//
+
+ const firebaseDatabase = firebase.database();
+ const firebaseAuth = firebase.auth();
+
+ // Get Elements
+ const emailText = document.getElementById('emailText');
+ const passwordText = document.getElementById('passwordText');
+ const signinBtn = document.getElementById('signinBtn');
+ const signupBtn = document.getElementById('signupBtn');
+
+ // Add login event
+ signinBtn.addEventListener('click', e => {
+     // Get email and pass
+     const email = emailText.value;
+     const pass = passwordText.value;
+     const auth = firebase.auth();
+     // Signin
+     const promise = auth.signInWithEmailAndPassword(email, pass);
+     promise.catch(e => console.log(e.message))
+     .then(function(user) {
+     });
+ });
+
+ // Add signup event
+ signupBtn.addEventListener('click', e => {
+     // Get email and pass
+     const email = emailText.value;
+     const password = passwordText.value;
+     const auth = firebase.auth();
+     // Signin
+     const promise = auth.createUserWithEmailAndPassword(email, password);
+     promise.catch(e => console.log(e.message));
+     var errorCode = e.code;
+     var errorMessage = e.message;
+     console.log(errorCode);
+     console.log(errorMessage);
+     window.alert("Error:" + errorMessage);
+ });
+
+ // Add a realtime listener
+ firebase.auth().onAuthStateChanged(firebaseUser => {
+     if(firebaseUser) {
+         console.log(firebaseUser);
+         logoutBtn.classList.remove('hide');
+     } else {
+         console.log('not logged in');
+         logoutBtn.classList.add('hide');
+     }
+ });
 
 //-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-//
 
@@ -123,7 +127,7 @@ function signin() {
 //         logoutBtn.classList.add('hide');
 //     }
 // });
-
+//
 //var emailText = document.getElementById('emailText').value;
 //var passwordText = document.getElementById('passwordText').value;
 //
