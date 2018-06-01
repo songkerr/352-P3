@@ -40,7 +40,6 @@ function showPage() {
 
 // ================ dog list ================ //
 
-// var dogsRef = rootRef.child('Dogs');
 var query = firebase.database().ref("Dogs");
 query.once("value")
     .then(function(snapshot) {
@@ -115,17 +114,30 @@ query.once("value")
         window.alert("Error:" + errorMessage);
  });
 
+$('#signupBtn').click (function (e) {
+   e.preventDefault();
+    
+   setTimeout(function () {
+       window.location.href = "register.html";
+    }, 1800);
+
+});
+
  // Add a realtime listener
  firebase.auth().onAuthStateChanged(firebaseUser => {
      if(firebaseUser) {
+         var userId = user.uid;
          console.log(firebaseUser);
-         window.location = 'register.html';
          logoutBtn.classList.remove('hide');
      } else {
          console.log('not logged in');
          logoutBtn.classList.add('hide');
      }
  });
+
+// ================ saving user info ================ //
+
+
 
 //-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-//
 

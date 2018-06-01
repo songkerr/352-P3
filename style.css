@@ -10,7 +10,11 @@ body {
     height: 100%;
 }
 
-/* ================ index ================ */
+.noscroll {
+    overflow-y: hidden;
+}
+
+/* ==================== index ==================== */
 #index {
     background: linear-gradient(30deg, #32D2B9 , #93E44C);
 }
@@ -86,13 +90,13 @@ button:focus{
     padding: 3.2px 12px;
 }
 
-/* ================ sign in ================ */
+/* ==================== sign in ==================== */
 
 #signinlogo {
     display: block;
     margin: auto;
-    height: 9vh;
-    margin-top: 22vh;
+    height: 11vh;
+    margin-top: 14vh;
 }
 
 #signinform {
@@ -101,7 +105,7 @@ button:focus{
     width: 64%;
     margin: auto;
     text-align: center;
-    margin-top: 10vh;
+    margin-top: 16vh;
 }
 
 #signinform > input[type="text"], #signinform > input[type="password"] {
@@ -110,7 +114,7 @@ button:focus{
     border: 0;
     border-bottom: 1px solid #353535;
     text-align: center;
-    margin-bottom: 40px;
+    margin-top: 6vh;
 }
 
 input:focus{
@@ -125,16 +129,16 @@ input:focus{
     border-radius: 50px;
     padding: 10px 22px 6px;
     margin: auto;
-    margin-top: 4vh;
+    margin-top: 10vh;
     background: linear-gradient(45deg, #32D2B9 , #93E44C);
 }
 
-/* ================ sign up ================ */
+/* ==================== sign up ==================== */
 #signuplogo {
     display: block;
     margin: auto;
     height: 9vh;
-    margin-top: 18vh;
+    margin-top: 14vh;
 }
 
 .registerText {
@@ -150,7 +154,7 @@ input:focus{
     width: 64%;
     margin: auto;
     text-align: center;
-    margin-top: 10vh;
+    margin-top: 6vh;
 }
 
 #signupform > input[type="text"], #signupform > input[type="password"] {
@@ -159,7 +163,7 @@ input:focus{
     border: 0;
     border-bottom: 1px solid #353535;
     text-align: center;
-    margin-bottom: 40px;
+    margin-top: 6vh;
 }
 
 #signupBtn {
@@ -171,11 +175,18 @@ input:focus{
     border-radius: 50px;
     padding: 10px 22px 6px;
     margin: auto;
-    margin-top: 4vh;
+    margin-top: 12vh;
     background: linear-gradient(45deg, #32D2B9 , #93E44C);
 }
 
-/* ================ register dog ================ */
+/* ==================== register dog ==================== */
+
+#registerlogo {
+    display: block;
+    margin: auto;
+    height: 9vh;
+    margin-top: 10vh;
+}
 
 #registerdog {
     display: flex;
@@ -183,7 +194,16 @@ input:focus{
     width: 64%;
     margin: auto;
     text-align: center;
-    margin-top: 10vh;
+    margin-top: 6vh;
+}
+
+#registerdog > input[type="text"] {
+    font-weight: 300;
+    font-family: 'Josefin Sans', sans-serif;
+    border: 0;
+    border-bottom: 1px solid #353535;
+    text-align: center;
+    margin-top: 6vh;
 }
 
 input[list] {
@@ -194,7 +214,7 @@ input[list] {
     color: #353535;
     border: 0;
     border-bottom: 1px solid #4F4F4F;
-    margin-top: 12%;
+    margin-top: 6vh;
     background-image: url("img/search.png");
     background-size: 1.9vh;
     background-position: 96% 50%;
@@ -219,7 +239,7 @@ input::-webkit-calendar-picker-indicator {
     background-size: 1.6vh;
     background-position: 96% 50%;
     background-repeat: no-repeat;
-    margin-top: 12%;
+    margin-top: 6vh;
 }
 
 select:focus {
@@ -242,7 +262,7 @@ input[type="submit"]:focus {
     outline: none;
 }
 
-/* ================ suggested tracks ================ */
+/* ==================== suggested tracks ==================== */
 
 #recommended {
     text-align: center;
@@ -282,7 +302,7 @@ a: visited {
     margin-top: 4vh;
 }
 
-/* ================ individual track pages ================ */
+/* ==================== individual track pages ==================== */
 
 .trackTitle {
     text-align: center;
@@ -331,7 +351,7 @@ a: visited {
     color: #63D691;
 }
 
-/* ================ nav bar ================ */
+/* ==================== nav bar ==================== */
 
 footer {
     display: flex;

@@ -8,11 +8,13 @@
         <link rel="stylesheet" href="style.css" />
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400" rel="stylesheet">
     </head>
-    <body>
+    <body class="noscroll">
         
-        <img id="signinlogo" src="img/favicon.png">
+        <img id="registerlogo" src="img/favicon.png">
         <p class="registerText">Now register your dog</p>
         <form id="registerdog">
+            <input type="text" id="dogName" placeholder="NAME">
+            <input type="text" id="ageName" placeholder="AGE">
             <input list="breedsList" placeholder="BREED">
             <datalist id="breedsList">
             </datalist>
