@@ -110,11 +110,9 @@ query.once("value")
      // Signin
      const promise = auth.createUserWithEmailAndPassword(email, password);
      promise.catch(e => console.log(e.message));
-     var errorCode = e.code;
-     var errorMessage = e.message;
-     console.log(errorCode);
-     console.log(errorMessage);
-     window.alert("Error:" + errorMessage);
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        window.alert("Error:" + errorMessage);
  });
 
  // Add a realtime listener
