@@ -38,7 +38,7 @@ function showPage() {
     window.location.replace(option + ".html");
 }
 
-// ================ dog list ================ //
+// ================ dog breed list ================ //
 
 var query = firebase.database().ref("Dogs");
 query.once("value")
@@ -78,34 +78,35 @@ query.once("value")
 
 //-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-//
 
- const firebaseDatabase = firebase.database();
- const firebaseAuth = firebase.auth();
+const firebaseDatabase = firebase.database();
+const firebaseAuth = firebase.auth();
 
 // Get Elements
-const emailText = document.getElementById('emailText');
-const passwordText = document.getElementById('passwordText');
+var userName = document.getElementById('nameText');
+var emailText = document.getElementById('emailText');
+var passwordText = document.getElementById('passwordText');
 const signinBtn = document.getElementById('signinBtn');
 const signupBtn = document.getElementById('signupBtn');
 const logoutBtn = document.getElementById('logoutBtn');
 
- // Add login event
- signinBtn.addEventListener('click', e => {
+// Add login event
+signinBtn.addEventListener('click', e => {
      // Get email and pass
-     const email = emailText.value;
-     const pass = passwordText.value;
+     var email = emailText.value;
+     var pass = passwordText.value;
      const auth = firebase.auth();
      // Signin
      const promise = auth.signInWithEmailAndPassword(email, pass);
      promise.catch(e => console.log(e.message))
      .then(function(user) {
      });
- });
+});
 
- // Add signup event
- signupBtn.addEventListener('click', e => {
+// Add signup event
+signupBtn.addEventListener('click', e => {
      // Get email and pass
-     const email = emailText.value;
-     const password = passwordText.value;
+     var email = emailText.value;
+     var password = passwordText.value;
      const auth = firebase.auth();
      // Signin
      const promise = auth.createUserWithEmailAndPassword(email, password);
@@ -113,66 +114,77 @@ const logoutBtn = document.getElementById('logoutBtn');
         var errorCode = error.code;
         var errorMessage = error.message;
         window.alert("Error:" + errorMessage);
- });
+});
+
+$('#signupBtn').click (function (e) {
+   e.preventDefault();
+});
 
 //// Logout
 //logoutBtn.addEventListener('click', e=> {
 //    firebase.auth().signOut();
 //});
 
-$('#signupBtn').click (function (e) {
-   e.preventDefault();
-});
-
  // Add a realtime listener
  firebase.auth().onAuthStateChanged(firebaseUser => {
      if(firebaseUser) {
          var userId = firebaseUser.uid;
+         var userEmail = firebaseUser.email;
+         var userName = nameText.value;
          console.log(firebaseUser);
          window.alert("login success");  
-         //logoutBtn.styleList.remove('hide');
          setTimeout(function () {
-             window.location.href = "register.html";
-         }, 1800);
-         
-         //rootRef.child("Users").set()
+            window.location.href = "register.html";
+        }, 1800);
+         //logoutBtn.classList.remove('hide');
+// ------------------------------------------------------------ //
+        rootRef.child('Users').child(userId).once("value", function(snapshot){
+            var ifExists = snapshot.exists();
+            if(ifExists){
+              console.log('already in system');
+            } else{
+              rootRef.child('Users').child(userId).push({name: userName, email: userEmail});
+            }
+        });
+// ------------------------------------------------------------ //
+//        // listen for form submit
+//        document.getElementById('registerdog').addEventListener('submit', submitForm);
+//
+//        function submitForm(e){
+//            e.preventDefault();
+//            //put the names of the form inputs in the variables
+//            var dogName = getInputVal('dogName');
+//            var dogAge = getInputVal('dogAge');
+////            var dogBreed = document.getElementById('breedsList').val();
+////            var dogSize = document.getElementById('dogsize').val();
+//            //save message - put the variable names in here
+//            saveMessage(dogname, dogage);
+//            //This resets the form - put your form id in here again
+//            document.getElementById('registerdog').reset();
+//        }
+//
+//        //function to get form values
+//        function getInputVal(id){
+//            return document.getElementById(id).value;
+//        }
+//
+//        var path = firebase.database().ref('Users').child(userId).child('userpaths')
+//
+//        function saveMessage(dogname, dogage){
+//          var userinfoRef = path.push();
+//          userinfoRef.set({
+//            //this is the name in firebase : this is the variable name,
+//            dogname:dogName,
+//            dogage:dogAge,
+////            dogbreed:dogBreed,
+////            dogsize:dogSize
+//          });
+//            console.log("information saved");
+//        }
+// ------------------------------------------------------------ //
      } else {
          console.log('not logged in');
          window.alert("login fail");
          //logoutBtn.classList.add('hide');
      }
  });
-
-// ================ saving user info ================ //
-
-//-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-//
-
-// firebase.auth().onAuthStateChanged(firebaseUser => {
-//     if(firebaseUser) {
-//         console.log(firebaseUser);
-//         logoutBtn.classList.remove('hide');
-//     } else {
-//         console.log('not logged in');
-//         logoutBtn.classList.add('hide');
-//     }
-// });
-//
-//var emailText = document.getElementById('emailText').value;
-//var passwordText = document.getElementById('passwordText').value;
-//
-//function login() {
-//    window.alert(emailText + " " + passwordText);
-//    firebase.auth().signInWithEmailAndPassword(emailText, passwordText).catch(function(error) {
-//        var errorCode = error.code;
-//        var errorMessage = error.message;
-//        window.alert("Error:" + errorMessage);
-//    });
-//}
-//
-//function create_account(){
-//    firebase.auth().createUserWithEmailAndPassword(emailText, passwordText).catch(function(error) {
-//        var errorCode = error.code;
-//        var errorMessage = error.message;
-//        window.alert("Error:" + errorMessage);
-//    });
-//}

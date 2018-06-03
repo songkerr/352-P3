@@ -12,15 +12,15 @@
         
         <img id="registerlogo" src="img/favicon.png">
         <p class="registerText">And now a bit about your dog</p>
-        <form id="registerdog">
+        <form id="registerdog" method="post">
             <input type="text" id="dogName" placeholder="NAME">
-            <input type="text" id="ageName" placeholder="AGE">
+            <input type="text" id="dogAge" placeholder="AGE">
             <input list="breedsList" placeholder="BREED">
             <datalist id="breedsList">
             </datalist>
             <select id="dogsize">
                 <option disabled="disabled" selected="selected">SIZE</option>
-                <option value='small'>Small</option>
+                <option value="small">Small</option>
                 <option value="medium">Medium</option>
                 <option value="large">Large</option>
             </select>
