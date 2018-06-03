@@ -194,7 +194,7 @@ input:focus{
     width: 64%;
     margin: auto;
     text-align: center;
-    margin-top: 6vh;
+    margin-top: 4vh;
 }
 
 #registerdog > input[type="text"] {

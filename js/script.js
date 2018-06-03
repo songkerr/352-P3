@@ -81,11 +81,12 @@ query.once("value")
  const firebaseDatabase = firebase.database();
  const firebaseAuth = firebase.auth();
 
- // Get Elements
- const emailText = document.getElementById('emailText');
- const passwordText = document.getElementById('passwordText');
- const signinBtn = document.getElementById('signinBtn');
- const signupBtn = document.getElementById('signupBtn');
+// Get Elements
+const emailText = document.getElementById('emailText');
+const passwordText = document.getElementById('passwordText');
+const signinBtn = document.getElementById('signinBtn');
+const signupBtn = document.getElementById('signupBtn');
+const logoutBtn = document.getElementById('logoutBtn');
 
  // Add login event
  signinBtn.addEventListener('click', e => {
@@ -114,30 +115,35 @@ query.once("value")
         window.alert("Error:" + errorMessage);
  });
 
+//// Logout
+//logoutBtn.addEventListener('click', e=> {
+//    firebase.auth().signOut();
+//});
+
 $('#signupBtn').click (function (e) {
    e.preventDefault();
-    
-   setTimeout(function () {
-       window.location.href = "register.html";
-    }, 1800);
-
 });
 
  // Add a realtime listener
  firebase.auth().onAuthStateChanged(firebaseUser => {
      if(firebaseUser) {
-         var userId = user.uid;
+         var userId = firebaseUser.uid;
          console.log(firebaseUser);
-         logoutBtn.classList.remove('hide');
+         window.alert("login success");  
+         //logoutBtn.styleList.remove('hide');
+         setTimeout(function () {
+             window.location.href = "register.html";
+         }, 1800);
+         
+         //rootRef.child("Users").set()
      } else {
          console.log('not logged in');
-         logoutBtn.classList.add('hide');
+         window.alert("login fail");
+         //logoutBtn.classList.add('hide');
      }
  });
 
 // ================ saving user info ================ //
-
-
 
 //-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-//
 
