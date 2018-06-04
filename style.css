@@ -247,6 +247,10 @@ select:focus {
 }
 
 #submitBtn {
+    margin-top: 19vh;
+    margin-bottom: -10vh;
+    color: white;
+/*
     font-family: 'Josefin Sans', sans-serif;
     text-decoration: none;
     font-weight: 400;
@@ -254,15 +258,24 @@ select:focus {
     border: none;
     border-radius: 50px;
     padding: 10px 22px 6px;
-    display: block;
     margin: auto;
-    margin-top: 12vh;
+    margin-top: 17vh;
+    margin-bottom: -10vh;
     background: linear-gradient(45deg, #32D2B9 , #93E44C);
+*/
 }
 
 #showPageBtn {
     display: block;
     margin: auto;
+    font-family: 'Josefin Sans', sans-serif;
+    text-decoration: none;
+    font-weight: 400;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 22px 6px;
+    background: linear-gradient(45deg, #32D2B9 , #93E44C);
 }
 
 /*
