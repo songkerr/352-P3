@@ -32,6 +32,8 @@ tracksRef.orderByChild("Size").equalTo("large").on("child_added", function (snap
     $("#lrgResults").append("<div class='infodiv'> <a href=" + newTrack.URL + " <p> " + newTrack.Track + "</p><p> Distance: " + newTrack.Distance + "<br> Time: Approximately " + newTrack.Time + "<br> Suitable for " + newTrack.Size + " dogs of " + newTrack.Fitness + " fitness</p></a></div>");
 });
 
+// ================ show suggested tracks ================ //
+
 function showPage() {
     var sel = document.getElementById('dogsize');
     var option = sel.options[sel.selectedIndex].value;
@@ -53,30 +55,6 @@ query.once("value")
     });
 
 // ================ user signup/in ================ //
-
-//var provider = new firebase.auth.GoogleAuthProvider();
-//
-//function signin() {
-//    firebase.auth().signInWithPopup(provider).then(function(result) {
-//        // This gives you a Google Access Token. You can use it to access the Google API.
-//        var token = result.credential.accessToken;
-//        // The signed-in user info.
-//        var user = result.user;
-//        console.log(user.displayName);
-//        // ...
-//    }).catch(function(error) {
-//        // Handle Errors here.
-//        var errorCode = error.code;
-//        var errorMessage = error.message;
-//        // The email of the user's account used.
-//        var email = error.email;
-//        // The firebase.auth.AuthCredential type that was used.
-//        var credential = error.credential;
-//        // ...
-//        });
-//}
-
-//-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-//
 
 const firebaseDatabase = firebase.database();
 const firebaseAuth = firebase.auth();
@@ -132,9 +110,10 @@ $('#signupBtn').click (function (e) {
          var userEmail = firebaseUser.email;
          var userName = nameText.value;
          console.log(firebaseUser); 
+         console.log(userName);
          setTimeout(function () {
             window.location.href = "register.html";
-        }, 1800);
+        }, 2000);
          //logoutBtn.classList.remove('hide');
 // ------------------------------------------------------------ //
         rootRef.child('Users').child(userId).once("value", function(snapshot){
@@ -173,6 +152,12 @@ $('#signupBtn').click (function (e) {
           });
             console.log("information saved");
         }
+         
+// ------------------------------------------------------------ //
+         var newUser = firebase.auth().currentUser;
+         var newUserId = newUser().userId;
+
+         $("#imgName").append("<p class='userName'" + newUserId.name + "</p>");
 // ------------------------------------------------------------ //
      } else {
          console.log('not logged in');
@@ -180,3 +165,11 @@ $('#signupBtn').click (function (e) {
          //logoutBtn.classList.add('hide');
      }
  });
+
+//var userInfoRef = rootRef.child('Users');
+//
+//userInfoRef.orderByChild(userId).equalTo("name").on("child_added", function (snapshot) {
+//    var newUser = snapshot.val();
+//    
+//    $("#imgName").append("<p class='userName'" + newUser.name + "</p>");
+//});
