@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	   <link rel="stylesheet" type="text/css" href="../style.css">
+
+	   <script src="js/albertroute.js"></script>
+	   
+	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	   		
+       <title>Paw Prints</title>
+       <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+       <meta charset="utf-8">
+	   
+	   <script>
+		   $(document).ready(function(){
+		   	 $(".redtrack").click(function(){
+		   		$("#myDIV").slideToggle("slow");
+			});
+		 });
+	   </script>
+		 
+	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>		    
+   </head>
+   
+   <body>
+       <header>
+       </header> 
+	
+  	<div id="routemap"></div>  
+
+   		
+	    <script async defer	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAurrAyKu3_UAVWVrGRLAGgGVFTsLZHILI&libraries=visualization&callback=initMap">
+	    </script>
+				
+	</body>
+</html>
+	    
+		

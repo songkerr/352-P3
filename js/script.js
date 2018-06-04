@@ -40,9 +40,9 @@ function showPage() {
     window.location.replace(option + ".html");
 }
 
-$("#showPageBtn").click(function(){
-    $("#submitBtn").click();
-});
+//$("#showPageBtn").click(function(){
+//    $("#submitBtn").click();
+//});
 
 // ================ dog breed list ================ //
 
@@ -146,7 +146,7 @@ $('#signupBtn').click (function (e) {
             document.getElementById('registerdog').reset();
         }
 
-        var newDogRef = firebase.database().ref('Users').child(userId);
+        var newDogRef = firebase.database().ref('userDog').child(userId);
 
         function saveNewDog(dogname, dogage){
           var dogInfoRef = newDogRef.push();
