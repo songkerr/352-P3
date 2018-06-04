@@ -125,39 +125,39 @@ $('#signupBtn').click (function (e) {
             }
         });
 // ------------------------------------------------------------ //
-        // listen for form submit
-        document.getElementById('registerdog').addEventListener('submit', submitDogForm);
-         
-        //function to get form values
-        function getInputVal(id){
-            return document.getElementById(id).value;
-        }
-
-        function submitDogForm(e){
-            e.preventDefault();
-            var dogName = getInputVal('dogName');
-            var dogAge = getInputVal('dogAge');
-            //save message - put the variable names in here
-            saveNewDog(dogname, dogage);
-            document.getElementById('registerdog').reset();
-        }
-
-        var newDogRef = firebase.database().ref('Users').child(userId);
-
-        function saveNewDog(dogname, dogage){
-          var dogInfoRef = newDogRef.push();
-          dogInfoRef.set({
-            dogname: dogName,
-            dogage: dogAge,
-          });
-            console.log("information saved");
-        }
+//        // listen for form submit
+//        document.getElementById('registerdog').addEventListener('submit', submitDogForm);
+//         
+//        //function to get form values
+//        function getInputVal(id){
+//            return document.getElementById(id).value;
+//        }
+//
+//        function submitDogForm(e){
+//            e.preventDefault();
+//            var dogName = getInputVal('dogName');
+//            var dogAge = getInputVal('dogAge');
+//            //save message - put the variable names in here
+//            saveNewDog(dogname, dogage);
+//            document.getElementById('registerdog').reset();
+//        }
+//
+//        var newDogRef = firebase.database().ref('Users').child(userId);
+//
+//        function saveNewDog(dogname, dogage){
+//          var dogInfoRef = newDogRef.push();
+//          dogInfoRef.set({
+//            dogname: dogName,
+//            dogage: dogAge,
+//          });
+//            console.log("information saved");
+//        }
          
 // ------------------------------------------------------------ //
-         var newUser = firebase.auth().currentUser;
-         var newUserId = newUser().userId;
-
-         $("#imgName").append("<p class='userName'" + newUserId.name + "</p>");
+//         var newUser = firebase.auth().currentUser;
+//         var newUserId = newUser().userId;
+//
+//         $("#imgName").append("<p class='userName'" + newUserId.name + "</p>");
 // ------------------------------------------------------------ //
      } else {
          console.log('not logged in');

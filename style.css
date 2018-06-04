@@ -260,6 +260,11 @@ select:focus {
     background: linear-gradient(45deg, #32D2B9 , #93E44C);
 }
 
+#showPageBtn {
+    display: block;
+    margin: auto;
+}
+
 /*
 input[type="submit"] {
     display: block;
