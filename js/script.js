@@ -131,8 +131,7 @@ $('#signupBtn').click (function (e) {
          var userId = firebaseUser.uid;
          var userEmail = firebaseUser.email;
          var userName = nameText.value;
-         console.log(firebaseUser);
-         window.alert("login success");  
+         console.log(firebaseUser); 
          setTimeout(function () {
             window.location.href = "register.html";
         }, 1800);
@@ -143,44 +142,37 @@ $('#signupBtn').click (function (e) {
             if(ifExists){
               console.log('already in system');
             } else{
-              rootRef.child('Users').child(userId).push({name: userName, email: userEmail});
+              rootRef.child('Users').child(userId).set({name: userName, email: userEmail});
             }
         });
 // ------------------------------------------------------------ //
-//        // listen for form submit
-//        document.getElementById('registerdog').addEventListener('submit', submitForm);
-//
-//        function submitForm(e){
-//            e.preventDefault();
-//            //put the names of the form inputs in the variables
-//            var dogName = getInputVal('dogName');
-//            var dogAge = getInputVal('dogAge');
-////            var dogBreed = document.getElementById('breedsList').val();
-////            var dogSize = document.getElementById('dogsize').val();
-//            //save message - put the variable names in here
-//            saveMessage(dogname, dogage);
-//            //This resets the form - put your form id in here again
-//            document.getElementById('registerdog').reset();
-//        }
-//
-//        //function to get form values
-//        function getInputVal(id){
-//            return document.getElementById(id).value;
-//        }
-//
-//        var path = firebase.database().ref('Users').child(userId).child('userpaths')
-//
-//        function saveMessage(dogname, dogage){
-//          var userinfoRef = path.push();
-//          userinfoRef.set({
-//            //this is the name in firebase : this is the variable name,
-//            dogname:dogName,
-//            dogage:dogAge,
-////            dogbreed:dogBreed,
-////            dogsize:dogSize
-//          });
-//            console.log("information saved");
-//        }
+        // listen for form submit
+        document.getElementById('registerdog').addEventListener('submit', submitDogForm);
+         
+        //function to get form values
+        function getInputVal(id){
+            return document.getElementById(id).value;
+        }
+
+        function submitDogForm(e){
+            e.preventDefault();
+            var dogName = getInputVal('dogName');
+            var dogAge = getInputVal('dogAge');
+            //save message - put the variable names in here
+            saveNewDog(dogname, dogage);
+            document.getElementById('registerdog').reset();
+        }
+
+        var newDogRef = firebase.database().ref('Users').child(userId);
+
+        function saveNewDog(dogname, dogage){
+          var dogInfoRef = newDogRef.push();
+          dogInfoRef.set({
+            dogname: dogName,
+            dogage: dogAge,
+          });
+            console.log("information saved");
+        }
 // ------------------------------------------------------------ //
      } else {
          console.log('not logged in');
