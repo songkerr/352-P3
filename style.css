@@ -394,7 +394,31 @@ a: visited {
     width: 90vw;
     margin: auto;
     margin-top: 2.5vh;
-    border-radius: 20px;
+}
+
+.back {
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 20vw;
+    margin-bottom: 4vh;
+}
+
+.back > a {
+    display: inline-flex;
+    text-decoration: none;
+    color: red;
+}
+
+.backW {
+    font-weight: 400;
+    margin-left: 1.6vw;
+}
+
+.back > a > img {
+    height: 2.4vh;
+    margin: auto;
 }
 
 /* ==================== profile ==================== */
