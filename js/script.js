@@ -40,9 +40,9 @@ function showPage() {
     window.location.replace(option + ".html");
 }
 
-//$("#showPageBtn").click(function(){
-//    $("#submitBtn").click();
-//});
+$("#showPageBtn").click(function(){
+    $("#submitBtn").click();
+});
 
 // ================ dog breed list ================ //
 
@@ -52,7 +52,6 @@ query.once("value")
         snapshot.forEach(function(childSnapshot) {
             var key = childSnapshot.key;
             var childData = childSnapshot.val();
-            //console.log(childData.Breed);
             $("#breedsList").append("<option value='" + childData.Breed + "'</option>" )
         });
 
@@ -71,18 +70,18 @@ const signinBtn = document.getElementById('signinBtn');
 const signupBtn = document.getElementById('signupBtn');
 const logoutBtn = document.getElementById('logoutBtn');
 
-// Add login event
-signinBtn.addEventListener('click', e => {
-     // Get email and pass
-     var email = emailText.value;
-     var pass = passwordText.value;
-     const auth = firebase.auth();
-     // Signin
-     const promise = auth.signInWithEmailAndPassword(email, pass);
-     promise.catch(e => console.log(e.message))
-     .then(function(user) {
-     });
-});
+//// Add login event
+//signinBtn.addEventListener('click', e => {
+//     // Get email and pass
+//     var email = emailText.value;
+//     var pass = passwordText.value;
+//     const auth = firebase.auth();
+//     // Signin
+//     const promise = auth.signInWithEmailAndPassword(email, pass);
+//     promise.catch(e => console.log(e.message))
+//     .then(function(user) {
+//     });
+//});
 
 // Add signup event
 signupBtn.addEventListener('click', e => {
@@ -113,8 +112,13 @@ $('#signupBtn').click (function (e) {
          var userId = firebaseUser.uid;
          var userEmail = firebaseUser.email;
          var userName = nameText.value;
-         console.log(firebaseUser); 
-         console.log(userName);
+         
+//         var currentUser = firebase.auth().currentUser;
+//         currentUser.updateProfile({
+//             displayName:"Test"
+//         });
+         
+         console.log(firebaseUser.displayName);
          setTimeout(function () {
             window.location.href = "register.html";
         }, 2000);
@@ -129,39 +133,39 @@ $('#signupBtn').click (function (e) {
             }
         });
 // ------------------------------------------------------------ //
-//        // listen for form submit
-//        document.getElementById('registerdog').addEventListener('submit', submitDogForm);
-//         
-//        //function to get form values
-//        function getInputVal(id){
-//            return document.getElementById(id).value;
-//        }
-//
-//        function submitDogForm(e){
-//            e.preventDefault();
-//            var dogName = getInputVal('dogName');
-//            var dogAge = getInputVal('dogAge');
-//            //save message - put the variable names in here
-//            saveNewDog(dogname, dogage);
-//            document.getElementById('registerdog').reset();
-//        }
-//
-//        var newDogRef = firebase.database().ref('userDog').child(userId);
-//
-//        function saveNewDog(dogname, dogage){
-//          var dogInfoRef = newDogRef.push();
-//          dogInfoRef.set({
-//            dogname: dogName,
-//            dogage: dogAge,
-//          });
-//            console.log("information saved");
-//        }
+        // listen for form submit
+        document.getElementById('registerdog').addEventListener('submit', submitDogForm);
+         
+        //function to get form values
+        function getInputVal(id){
+            return document.getElementById(id).value;
+        }
+
+        function submitDogForm(e){
+            e.preventDefault();
+            var dogName = getInputVal('dogName');
+            var dogAge = getInputVal('dogAge');
+            //save message - put the variable names in here
+            saveNewDog(dogname, dogage);
+            document.getElementById('registerdog').reset();
+        }
+
+        var newDogRef = firebase.database().ref('userDog').child(userId);
+
+        function saveNewDog(dogname, dogage){
+          var dogInfoRef = newDogRef.push();
+          dogInfoRef.set({
+            dogname: dogName,
+            dogage: dogAge,
+          });
+            console.log("information saved");
+        }
          
 // ------------------------------------------------------------ //
 //         var newUser = firebase.auth().currentUser;
 //         var newUserId = newUser().userId;
 //
-//         $("#imgName").append("<p class='userName'" + newUserId.name + "</p>");
+         $("#imgName").set("<p class='userName'" + firebaseUser.displayName + "</p>");
 // ------------------------------------------------------------ //
      } else {
          console.log('not logged in');
@@ -169,11 +173,3 @@ $('#signupBtn').click (function (e) {
          //logoutBtn.classList.add('hide');
      }
  });
-
-//var userInfoRef = rootRef.child('Users');
-//
-//userInfoRef.orderByChild(userId).equalTo("name").on("child_added", function (snapshot) {
-//    var newUser = snapshot.val();
-//    
-//    $("#imgName").append("<p class='userName'" + newUser.name + "</p>");
-//});
