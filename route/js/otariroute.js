@@ -11,7 +11,7 @@
 		
         var marker = new google.maps.Marker({
           position: myLatlng,
-          map: map,
+          //map: map,
 		  title: 'Click to zoom'
         });
 		

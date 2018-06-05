@@ -11,7 +11,6 @@ firebase.initializeApp(config);
 
 // ================ services collapse ================ //
 
-
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -55,12 +54,10 @@ tracksRef.orderByChild("Size").equalTo("large").on("child_added", function (snap
 function showPage() {
     var sel = document.getElementById('dogsize');
     var option = sel.options[sel.selectedIndex].value;
-    window.location.replace(option + ".html");
+    setTimeout(function () {
+        window.location.replace(option + ".html");
+    }, 1600);
 }
-
-//$("#showPageBtn").click(function(){
-//    $("#submitBtn").click();
-//});
 
 // ================ dog breed list ================ //
 
@@ -92,44 +89,44 @@ $('#signinBtn').click (function (e) {
    e.preventDefault();
 });
 
-// Add login event
-signinBtn.addEventListener('click', e => {
-     // Get email and pass
-     var email = emailText.value;
-     var pass = passwordText.value;
-     const auth = firebase.auth();
-     // Signin
-     const promise = auth.signInWithEmailAndPassword(email, pass);
-     promise.catch(e => console.log(e.message))
-     .then(function(user) {
-         setTimeout(function () {
-            window.location.href = "medium.html";
-         }, 2000);
-     });
-});
-
-// Add signup event
-signupBtn.addEventListener('click', e => {
-     // Get email and pass
-     var email = emailText.value;
-     var password = passwordText.value;
-     const auth = firebase.auth();
-     // Signin
-     const promise = auth.createUserWithEmailAndPassword(email, password);
-     promise.catch(e => console.log(e.message));
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        window.alert("Error:" + errorMessage);
-});
+//// Add login event
+//signinBtn.addEventListener('click', e => {
+//     // Get email and pass
+//     var email = emailText.value;
+//     var pass = passwordText.value;
+//     const auth = firebase.auth();
+//     // Signin
+//     const promise = auth.signInWithEmailAndPassword(email, pass);
+//     promise.catch(e => console.log(e.message))
+//     .then(function(user) {
+//         setTimeout(function () {
+//            window.location.href = "medium.html";
+//         }, 2000);
+//     });
+//});
+//
+//// Add signup event
+//signupBtn.addEventListener('click', e => {
+//     // Get email and pass
+//     var email = emailText.value;
+//     var password = passwordText.value;
+//     const auth = firebase.auth();
+//     // Signin
+//     const promise = auth.createUserWithEmailAndPassword(email, password);
+//     promise.catch(e => console.log(e.message));
+//        var errorCode = error.code;
+//        var errorMessage = error.message;
+//        window.alert("Error:" + errorMessage);
+//});
 
 $('#signupBtn').click (function (e) {
    e.preventDefault();
 });
 
-// Logout
-logoutBtn.addEventListener('click', e=> {
-    firebase.auth().signOut();
-});
+//// Logout
+//logoutBtn.addEventListener('click', e=> {
+//    firebase.auth().signOut();
+//});
 
  // Add a realtime listener
  firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -150,42 +147,69 @@ logoutBtn.addEventListener('click', e=> {
             }
         });
 // ------------------------------------------------------------ //
-        // listen for form submit
-        document.getElementById('registerdog').addEventListener('submit', submitDogForm);
+         $("#showPageBtn").click(function(){
+            $("#submitBtn").trigger('click');
+         });
          
-        //function to get form values
-        function getInputVal(id){
-            return document.getElementById(id).value;
-        }
-
-        function submitDogForm(e){
-            e.preventDefault();
-            var dogName = getInputVal('dogName');
-            var dogAge = getInputVal('dogAge');
-            //save message - put the variable names in here
-            saveNewDog(dogname, dogage);
-            document.getElementById('registerdog').reset();
-        }
-
-        var newDogRef = firebase.database().ref('userDog').child(userId);
-
-        function saveNewDog(dogname, dogage){
-          var dogInfoRef = newDogRef.push();
-          dogInfoRef.set({
-            dogname: dogName,
-            dogage: dogAge,
-          });
-            console.log("information saved");
-        }
+         // listen for form submit
+         document.getElementById('registerdog').addEventListener('submit', submitDogForm);
          
+         //function to get form values
+         function getInputVal(id){
+             return document.getElementById(id).value;
+         }
+         
+         function submitDogForm(e) {
+             e.preventDefault();
+             saveNewDog(dogName, dogSize);
+             document.getElementById('registerdog').reset();
+         }
+        
+         var newDogRef = rootRef.child('Users/' + firebaseUser.uid);
+         
+         function saveNewDog(dogName, dogSize){
+             var newDogRef = dogSizeRef.push();
+             newDogRef.set({
+                 dogName: getInputVal('dogName'),
+                 dogSize: getInputVal('dogsize')
+             });
+             console.log("dog size saved");
+         }
 // ------------------------------------------------------------ //
-//         var newUser = firebase.auth().currentUser;
-//         var newUserId = newUser().userId;
+         
+//        // listen for form submit
+//        document.getElementById('registerdog').addEventListener('submit', submitDogForm);
+//         
+//        //function to get form values
+//        function getInputVal(id){
+//            return document.getElementById(id).value;
+//        }
 //
-         $("#imgName").set("<p class='userName'" + firebaseUser.displayName + "</p>");
+//        function submitDogForm(e){
+//            e.preventDefault();
+//            var dogName = getInputVal('dogName');
+//            var dogAge = getInputVal('dogAge');
+//            //save message - put the variable names in here
+//            saveNewDog(dogname, dogage);
+//            document.getElementById('registerdog').reset();
+//        }
+//
+//        var newDogRef = firebase.database().ref('userDog').child(userId);
+//
+//        function saveNewDog(dogname, dogage){
+//          var dogInfoRef = newDogRef.push();
+//          dogInfoRef.set({
+//            dogname: dogName,
+//            dogage: dogAge,
+//          });
+//            console.log("information saved");
+//        }   
 // ------------------------------------------------------------ //
+
      } else {
          console.log('not logged in');
          window.alert("not logged in");
      }
  });
+
+// ================ saving recommended page for dog ================ //

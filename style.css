@@ -354,8 +354,8 @@ a: visited {
 
 #map {
     margin: auto;
-    margin-top: 5vh;
-    width: 65%;
+    margin-top: 4vh;
+    width: 80%;
     height: 50%;
 }
     
@@ -363,17 +363,28 @@ a: visited {
     margin-bottom: 14vh;
 }
 
-.description {
-    width: 65%;
+.description1 {
+    width: 80%;
     margin: auto;
+    margin-top: 5vh;
     color: #353535;
     text-align: left;
     font-weight: 300;
     font-size: 16px;
 }
 
+.description {
+    width: 80%;
+    margin: auto;
+    color: #353535;
+    text-align: left;
+    font-weight: 300;
+    font-size: 16px;
+    margin-top: -1vh;
+}
+
 #description > h5 {
-    width: 65%;
+    width: 80%;
     margin: auto;
     padding: 4vh 0px 1.4vh;
     font-size: 1rem;
@@ -512,11 +523,21 @@ a: visited {
     font-family: 'Josefin Sans', sans-serif;
     color: #63D691;
     font-size: 1.1rem;
+/*    padding-left: 8vw;*/
 }
+
+/*
+.collapsible > img {
+    height: 4vh;
+    float: right;
+    padding-right: 8vw;
+}
+*/
+
 
 .content {
     max-height: 0;
-    width: 85%;
+    width: 80%;
     margin: auto;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
