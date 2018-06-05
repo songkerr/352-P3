@@ -58,9 +58,9 @@ function showPage() {
     window.location.replace(option + ".html");
 }
 
-$("#showPageBtn").click(function(){
-    $("#submitBtn").click();
-});
+//$("#showPageBtn").click(function(){
+//    $("#submitBtn").click();
+//});
 
 // ================ dog breed list ================ //
 
@@ -88,6 +88,10 @@ const signinBtn = document.getElementById('signinBtn');
 const signupBtn = document.getElementById('signupBtn');
 const logoutBtn = document.getElementById('logoutBtn');
 
+$('#signinBtn').click (function (e) {
+   e.preventDefault();
+});
+
 // Add login event
 signinBtn.addEventListener('click', e => {
      // Get email and pass
@@ -98,6 +102,9 @@ signinBtn.addEventListener('click', e => {
      const promise = auth.signInWithEmailAndPassword(email, pass);
      promise.catch(e => console.log(e.message))
      .then(function(user) {
+         setTimeout(function () {
+            window.location.href = "medium.html";
+         }, 2000);
      });
 });
 
