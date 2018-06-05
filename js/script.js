@@ -89,35 +89,35 @@ $('#signinBtn').click (function (e) {
    e.preventDefault();
 });
 
-//// Add login event
-//signinBtn.addEventListener('click', e => {
-//     // Get email and pass
-//     var email = emailText.value;
-//     var pass = passwordText.value;
-//     const auth = firebase.auth();
-//     // Signin
-//     const promise = auth.signInWithEmailAndPassword(email, pass);
-//     promise.catch(e => console.log(e.message))
-//     .then(function(user) {
-//         setTimeout(function () {
-//            window.location.href = "medium.html";
-//         }, 2000);
-//     });
-//});
-//
-//// Add signup event
-//signupBtn.addEventListener('click', e => {
-//     // Get email and pass
-//     var email = emailText.value;
-//     var password = passwordText.value;
-//     const auth = firebase.auth();
-//     // Signin
-//     const promise = auth.createUserWithEmailAndPassword(email, password);
-//     promise.catch(e => console.log(e.message));
-//        var errorCode = error.code;
-//        var errorMessage = error.message;
-//        window.alert("Error:" + errorMessage);
-//});
+// Add login event
+signinBtn.addEventListener('click', e => {
+     // Get email and pass
+     var email = emailText.value;
+     var pass = passwordText.value;
+     const auth = firebase.auth();
+     // Signin
+     const promise = auth.signInWithEmailAndPassword(email, pass);
+     promise.catch(e => console.log(e.message))
+     .then(function(user) {
+         setTimeout(function () {
+            window.location.href = "medium.html";
+         }, 2000);
+     });
+});
+
+// Add signup event
+signupBtn.addEventListener('click', e => {
+     // Get email and pass
+     var email = emailText.value;
+     var password = passwordText.value;
+     const auth = firebase.auth();
+     // Signin
+     const promise = auth.createUserWithEmailAndPassword(email, password);
+     promise.catch(e => console.log(e.message));
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        window.alert("Error:" + errorMessage);
+});
 
 $('#signupBtn').click (function (e) {
    e.preventDefault();
@@ -147,34 +147,34 @@ $('#signupBtn').click (function (e) {
             }
         });
 // ------------------------------------------------------------ //
-         $("#showPageBtn").click(function(){
-            $("#submitBtn").trigger('click');
-         });
-         
-         // listen for form submit
-         document.getElementById('registerdog').addEventListener('submit', submitDogForm);
-         
-         //function to get form values
-         function getInputVal(id){
-             return document.getElementById(id).value;
-         }
-         
-         function submitDogForm(e) {
-             e.preventDefault();
-             saveNewDog(dogName, dogSize);
-             document.getElementById('registerdog').reset();
-         }
-        
-         var newDogRef = rootRef.child('Users/' + firebaseUser.uid);
-         
-         function saveNewDog(dogName, dogSize){
-             var newDogRef = dogSizeRef.push();
-             newDogRef.set({
-                 dogName: getInputVal('dogName'),
-                 dogSize: getInputVal('dogsize')
-             });
-             console.log("dog size saved");
-         }
+//         $("#showPageBtn").click(function(){
+//            $("#submitBtn").trigger('click');
+//         });
+//         
+//         // listen for form submit
+//         document.getElementById('registerdog').addEventListener('submit', submitDogForm);
+//         
+//         //function to get form values
+//         function getInputVal(id){
+//             return document.getElementById(id).value;
+//         }
+//         
+//         function submitDogForm(e) {
+//             e.preventDefault();
+//             saveNewDog(dogName, dogSize);
+//             document.getElementById('registerdog').reset();
+//         }
+//        
+//         var newDogRef = rootRef.child('Users/' + firebaseUser.uid);
+//         
+//         function saveNewDog(dogName, dogSize){
+//             var newDogRef = dogSizeRef.push();
+//             newDogRef.set({
+//                 dogName: getInputVal('dogName'),
+//                 dogSize: getInputVal('dogsize')
+//             });
+//             console.log("dog size saved");
+//         }
 // ------------------------------------------------------------ //
          
 //        // listen for form submit
@@ -207,7 +207,7 @@ $('#signupBtn').click (function (e) {
 // ------------------------------------------------------------ //
 
      } else {
-         console.log('not logged in');
+         //console.log('not logged in');
      }
  });
 
