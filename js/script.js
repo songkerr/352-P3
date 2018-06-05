@@ -1,13 +1,13 @@
 // Initialize Firebase
-  var config = {
+var config = {
     apiKey: "AIzaSyAMGxj5EH5ybAkSkFL7DaTKi84CgZChG18",
     authDomain: "p3-7860d.firebaseapp.com",
     databaseURL: "https://p3-7860d.firebaseio.com",
     projectId: "p3-7860d",
     storageBucket: "p3-7860d.appspot.com",
     messagingSenderId: "806105097238"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
 // ================ services collapse ================ //
 
@@ -16,15 +16,15 @@ var coll = document.getElementsByClassName("collapsible");
 var i;
 
 for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
 }
 
 // ================ database ================ //
@@ -126,10 +126,10 @@ $('#signupBtn').click (function (e) {
    e.preventDefault();
 });
 
-//// Logout
-//logoutBtn.addEventListener('click', e=> {
-//    firebase.auth().signOut();
-//});
+// Logout
+logoutBtn.addEventListener('click', e=> {
+    firebase.auth().signOut();
+});
 
  // Add a realtime listener
  firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -140,7 +140,6 @@ $('#signupBtn').click (function (e) {
          setTimeout(function () {
             window.location.href = "register.html";
         }, 2000);
-         //logoutBtn.classList.remove('hide');
 // ------------------------------------------------------------ //
         rootRef.child('Users').child(userId).once("value", function(snapshot){
             var ifExists = snapshot.exists();
@@ -187,6 +186,6 @@ $('#signupBtn').click (function (e) {
 // ------------------------------------------------------------ //
      } else {
          console.log('not logged in');
-         //logoutBtn.classList.add('hide');
+         window.alert("not logged in");
      }
  });
