@@ -11,6 +11,7 @@
 
 // ================ services collapse ================ //
 
+
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -80,25 +81,25 @@ const firebaseDatabase = firebase.database();
 const firebaseAuth = firebase.auth();
 
 // Get Elements
-var userName = document.getElementById('nameText');
+var nameText = document.getElementById('nameText');
 var emailText = document.getElementById('emailText');
 var passwordText = document.getElementById('passwordText');
 const signinBtn = document.getElementById('signinBtn');
 const signupBtn = document.getElementById('signupBtn');
 const logoutBtn = document.getElementById('logoutBtn');
 
-//// Add login event
-//signinBtn.addEventListener('click', e => {
-//     // Get email and pass
-//     var email = emailText.value;
-//     var pass = passwordText.value;
-//     const auth = firebase.auth();
-//     // Signin
-//     const promise = auth.signInWithEmailAndPassword(email, pass);
-//     promise.catch(e => console.log(e.message))
-//     .then(function(user) {
-//     });
-//});
+// Add login event
+signinBtn.addEventListener('click', e => {
+     // Get email and pass
+     var email = emailText.value;
+     var pass = passwordText.value;
+     const auth = firebase.auth();
+     // Signin
+     const promise = auth.signInWithEmailAndPassword(email, pass);
+     promise.catch(e => console.log(e.message))
+     .then(function(user) {
+     });
+});
 
 // Add signup event
 signupBtn.addEventListener('click', e => {
@@ -129,13 +130,6 @@ $('#signupBtn').click (function (e) {
          var userId = firebaseUser.uid;
          var userEmail = firebaseUser.email;
          var userName = nameText.value;
-         
-//         var currentUser = firebase.auth().currentUser;
-//         currentUser.updateProfile({
-//             displayName:"Test"
-//         });
-         
-         console.log(firebaseUser.displayName);
          setTimeout(function () {
             window.location.href = "register.html";
         }, 2000);
@@ -186,7 +180,6 @@ $('#signupBtn').click (function (e) {
 // ------------------------------------------------------------ //
      } else {
          console.log('not logged in');
-         window.alert("login fail");
          //logoutBtn.classList.add('hide');
      }
  });
