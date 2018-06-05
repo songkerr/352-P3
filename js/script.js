@@ -208,7 +208,6 @@ $('#signupBtn').click (function (e) {
 
      } else {
          console.log('not logged in');
-         window.alert("not logged in");
      }
  });
 
