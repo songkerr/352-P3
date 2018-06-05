@@ -474,6 +474,54 @@ a: visited {
     margin-left: 6%;
 }
 
+/* ==================== services ==================== */
+
+#services {
+    text-align: center;
+    color: #353535;
+    font-weight: 400;
+    width: 75%;
+    margin: auto;
+    margin-top: 5vh;
+    font-size: 1.9rem;
+}
+
+.collapsible {
+    width: 85%;
+    display: block;
+    margin: auto;
+    margin-top: 6vh;
+    box-shadow: 0px 0px 18px #e9e9e9; 
+    border-radius: 16px; 
+    height: 10vh;
+    background-color: white;
+    border: none;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #63D691;
+    font-size: 1.1rem;
+}
+
+.content {
+    max-height: 0;
+    width: 85%;
+    margin: auto;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.content > p {
+    margin-top: -2.4vh;
+}
+
+.content > p > a {
+    text-decoration: none;
+    color: #63D691;
+}
+
+#animalregistration {
+    margin-bottom: 16vh;
+}
+
 /* ==================== nav bar ==================== */
 
 footer {
@@ -498,4 +546,8 @@ footer > div {
 
 #paws {
     height: 5.5vh;
+}
+
+#servicesicon {
+    height: 4.6vh;
 }
