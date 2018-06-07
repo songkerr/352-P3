@@ -492,6 +492,8 @@ a: visited {
     right: 0;
     margin-top: 2vh;
     margin-right: 1.4vw;
+    background: none;
+    border: none;
 }
 
 #logoutBtn > img {
